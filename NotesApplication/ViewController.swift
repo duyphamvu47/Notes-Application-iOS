@@ -15,13 +15,26 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Notes"
         table.delegate = self
         table.dataSource = self
+        title = "Notes"
     }
     
     @IBAction func addBtnClcked(){
+        guard let viewController = storyboard?.instantiateViewController(identifier: "new") as? EntryViewController else{
+            return
+        }
         
+        viewController.title = "New Note"
+        viewController.navigationItem.largeTitleDisplayMode = .never
+        viewController.completion = {title, note in
+            self.navigationController?.popToRootViewController(animated: true)
+            self.models.append((title: title, note: note))
+            self.label.isHidden = true
+            self.table.isHidden = false
+            self.table.reloadData()
+        }
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
     // Table func:
@@ -30,7 +43,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cel", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = models[indexPath.row].title
         cell.detailTextLabel?.text = models[indexPath.row].note
         return cell
