@@ -8,19 +8,26 @@
 import UIKit
 
 class NotesViewController: UIViewController {
-    @IBOutlet var title_label: UILabel!
+    @IBOutlet var title_label: UITextField!
     @IBOutlet var note_label: UITextView!
     
     public var noteTitle: String = ""
     public var note: String = ""
     
-    
+    public var completion: ((String, String)-> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         title_label.text = noteTitle
         note_label.text = note
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(saveBtnClicked))
+    }
+    
+    @objc func saveBtnClicked(){
+        if let editedTitle = title_label.text, !editedTitle.isEmpty, let editedNote = note_label.text, !editedNote.isEmpty{
+            completion?(editedTitle, editedNote)
+        }
     }
     
 

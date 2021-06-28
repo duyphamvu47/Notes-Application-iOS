@@ -63,6 +63,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         viewController.title = "Note"
         viewController.noteTitle = noteToDisplay.title
         viewController.note = noteToDisplay.note
+        viewController.completion = {title, note in
+            self.navigationController?.popToRootViewController(animated: true)
+            if (title == noteToDisplay.title && note == noteToDisplay.note){
+                self.models.append((title: title, note: note))
+            }
+            else{
+                self.models.remove(at: indexPath.row)
+                self.models.append((title: title, note: note))
+            }
+            self.label.isHidden = true
+            self.table.isHidden = false
+            self.table.reloadData()
+        }
         navigationController?.pushViewController(viewController, animated: true)
     }
 }

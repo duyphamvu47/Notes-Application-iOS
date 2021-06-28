@@ -93,7 +93,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="WwH-rt-WIw"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="24"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8dA-gM-Xhu">
@@ -133,16 +133,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FcZ-Xh-pUl">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o0w-I8-geq">
                                 <rect key="frame" x="10" y="54" width="394" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="Zjj-a0-4h3"/>
+                                    <constraint firstAttribute="height" constant="60" id="IpK-Xa-ftk"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="24"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Wa2-fO-6Xg">
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="tdZ-8F-haT">
                                 <rect key="frame" x="10" y="124" width="394" height="728"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
@@ -153,23 +152,23 @@
                         <viewLayoutGuide key="safeArea" id="hvj-r5-zOG"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="FcZ-Xh-pUl" firstAttribute="top" secondItem="hvj-r5-zOG" secondAttribute="top" constant="10" id="H52-8g-0sO"/>
-                            <constraint firstItem="hvj-r5-zOG" firstAttribute="trailing" secondItem="Wa2-fO-6Xg" secondAttribute="trailing" constant="10" id="KqF-BA-euW"/>
-                            <constraint firstItem="Wa2-fO-6Xg" firstAttribute="top" secondItem="FcZ-Xh-pUl" secondAttribute="bottom" constant="10" id="N02-uK-J6d"/>
-                            <constraint firstItem="FcZ-Xh-pUl" firstAttribute="leading" secondItem="hvj-r5-zOG" secondAttribute="leading" constant="10" id="Vbr-mW-LPk"/>
-                            <constraint firstItem="hvj-r5-zOG" firstAttribute="bottom" secondItem="Wa2-fO-6Xg" secondAttribute="bottom" constant="10" id="bX1-mo-f3F"/>
-                            <constraint firstItem="Wa2-fO-6Xg" firstAttribute="leading" secondItem="hvj-r5-zOG" secondAttribute="leading" constant="10" id="c4d-ji-gqH"/>
-                            <constraint firstItem="hvj-r5-zOG" firstAttribute="trailing" secondItem="FcZ-Xh-pUl" secondAttribute="trailing" constant="10" id="zgk-PA-aL4"/>
+                            <constraint firstItem="o0w-I8-geq" firstAttribute="leading" secondItem="hvj-r5-zOG" secondAttribute="leading" constant="10" id="Cud-iC-hrI"/>
+                            <constraint firstItem="hvj-r5-zOG" firstAttribute="trailing" secondItem="tdZ-8F-haT" secondAttribute="trailing" constant="10" id="MMn-hf-Hze"/>
+                            <constraint firstItem="hvj-r5-zOG" firstAttribute="trailing" secondItem="o0w-I8-geq" secondAttribute="trailing" constant="10" id="UcK-Dn-aad"/>
+                            <constraint firstItem="tdZ-8F-haT" firstAttribute="top" secondItem="o0w-I8-geq" secondAttribute="bottom" constant="10" id="Wdo-VO-FmV"/>
+                            <constraint firstItem="hvj-r5-zOG" firstAttribute="bottom" secondItem="tdZ-8F-haT" secondAttribute="bottom" constant="10" id="g5c-FK-a7F"/>
+                            <constraint firstItem="tdZ-8F-haT" firstAttribute="leading" secondItem="hvj-r5-zOG" secondAttribute="leading" constant="10" id="jvQ-bM-Q9W"/>
+                            <constraint firstItem="o0w-I8-geq" firstAttribute="top" secondItem="hvj-r5-zOG" secondAttribute="top" constant="10" id="zt8-1C-ekf"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="note_label" destination="Wa2-fO-6Xg" id="os0-vF-u7c"/>
-                        <outlet property="title_label" destination="FcZ-Xh-pUl" id="cWU-z6-SA3"/>
+                        <outlet property="note_label" destination="tdZ-8F-haT" id="Spd-OB-fM9"/>
+                        <outlet property="title_label" destination="o0w-I8-geq" id="uf7-R5-A3d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KEu-bO-k31" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2806" y="103"/>
+            <point key="canvasLocation" x="2805.7971014492755" y="102.45535714285714"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="uww-AD-LqX">
