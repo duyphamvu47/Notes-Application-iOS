@@ -53,12 +53,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
+        let noteToDisplay = models[indexPath.row]
+        
         //Show note controller
-        guard let viewController = storyboard?.instantiateViewController(identifier: "notes") as? NotesViewController else{
+        guard let viewController = storyboard?.instantiateViewController(identifier: "note") as? NotesViewController else{
             return
         }
-        
+        viewController.navigationItem.largeTitleDisplayMode = .never
         viewController.title = "Note"
+        viewController.noteTitle = noteToDisplay.title
+        viewController.note = noteToDisplay.note
         navigationController?.pushViewController(viewController, animated: true)
     }
 }
