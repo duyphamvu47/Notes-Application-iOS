@@ -10,15 +10,16 @@ import UIKit
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet var table:UITableView!
     @IBOutlet var label:UILabel!
-    
-    var models : [(title: String, note: String)] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.loadNote()
         table.delegate = self
         table.dataSource = self
         title = "Notes"
     }
+
+    
     
     @IBAction func addBtnClcked(){
         guard let viewController = storyboard?.instantiateViewController(identifier: "new") as? EntryViewController else{
@@ -29,9 +30,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         viewController.navigationItem.largeTitleDisplayMode = .never
         viewController.completion = {title, note in
             self.navigationController?.popToRootViewController(animated: true)
-            self.models.append((title: title, note: note))
+            noteList.append(Note(title: title, note: note))
             self.label.isHidden = true
             self.table.isHidden = false
+            self.saveNote()
+            self.loadNote()
             self.table.reloadData()
         }
         navigationController?.pushViewController(viewController, animated: true)
@@ -39,13 +42,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     // Table func:
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return models.count
+        return noteList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = models[indexPath.row].title
-        cell.detailTextLabel?.text = models[indexPath.row].note
+        cell.textLabel?.text = noteList[indexPath.row].title
+        cell.detailTextLabel?.text = noteList[indexPath.row].note
         return cell
     }
     
@@ -53,7 +56,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let noteToDisplay = models[indexPath.row]
+        let noteToDisplay = noteList[indexPath.row]
         
         //Show note controller
         guard let viewController = storyboard?.instantiateViewController(identifier: "note") as? NotesViewController else{
@@ -65,18 +68,46 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         viewController.note = noteToDisplay.note
         viewController.completion = {title, note in
             self.navigationController?.popToRootViewController(animated: true)
-            if (title == noteToDisplay.title && note == noteToDisplay.note){
-                self.models.append((title: title, note: note))
+            let newNote = Note(title: title, note: note)
+
+            if let row = noteList.firstIndex(where: {$0.title == title || $0.note == note}) {
+                   noteList[row] = newNote
             }
             else{
-                self.models.remove(at: indexPath.row)
-                self.models.append((title: title, note: note))
+                noteList.append(newNote)
             }
             self.label.isHidden = true
             self.table.isHidden = false
+            self.saveNote()
+            self.loadNote()
             self.table.reloadData()
         }
         navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    
+    func saveNote(){
+        do{
+            let encoder = JSONEncoder()
+            let data = try encoder.encode(noteList)
+            UserDefaults.standard.set(data, forKey: storageKey)
+        } catch{
+            print("Unable to encode Note array(\(error))")
+        }
+        print("SaveData: ", noteList)
+    }
+    
+    func loadNote(){
+        if let data = UserDefaults.standard.data(forKey: storageKey){
+            do{
+                let decoder = JSONDecoder()
+                noteList = try decoder.decode([Note].self, from: data)
+            }catch{
+                print("Unable to decode Note array(\(error))")
+            }
+        }
+        print("LoadData: ", noteList)
+        
     }
 }
 

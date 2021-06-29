@@ -15,6 +15,7 @@
 		1A63B5FB2689B9FD0062D486 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A63B5F92689B9FD0062D486 /* LaunchScreen.storyboard */; };
 		1A63B6032689BAAD0062D486 /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A63B6022689BAAD0062D486 /* NotesViewController.swift */; };
 		1A63B6052689BACF0062D486 /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A63B6042689BACF0062D486 /* EntryViewController.swift */; };
+		1A7C35D2268B0C22002E402C /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7C35D1268B0C22002E402C /* Note.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		1A63B5FC2689B9FD0062D486 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1A63B6022689BAAD0062D486 /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
 		1A63B6042689BACF0062D486 /* EntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
+		1A7C35D1268B0C22002E402C /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				1A63B5FC2689B9FD0062D486 /* Info.plist */,
 				1A63B6022689BAAD0062D486 /* NotesViewController.swift */,
 				1A63B6042689BACF0062D486 /* EntryViewController.swift */,
+				1A7C35D1268B0C22002E402C /* Note.swift */,
 			);
 			path = NotesApplication;
 			sourceTree = "<group>";
@@ -148,6 +151,7 @@
 				1A63B5F32689B9F70062D486 /* ViewController.swift in Sources */,
 				1A63B5EF2689B9F70062D486 /* AppDelegate.swift in Sources */,
 				1A63B5F12689B9F70062D486 /* SceneDelegate.swift in Sources */,
+				1A7C35D2268B0C22002E402C /* Note.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
