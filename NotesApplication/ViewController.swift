@@ -20,7 +20,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 
     
-    
+    // Create new note
     @IBAction func addBtnClcked(){
         guard let viewController = storyboard?.instantiateViewController(identifier: "new") as? EntryViewController else{
             return
@@ -35,7 +35,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             self.table.isHidden = false
             self.saveNote()
             self.loadNote()
-            self.table.reloadData()
         }
         navigationController?.pushViewController(viewController, animated: true)
     }
@@ -52,7 +51,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return cell
     }
     
-    
+    // View detail and edit cell
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
@@ -80,9 +79,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             self.table.isHidden = false
             self.saveNote()
             self.loadNote()
-            self.table.reloadData()
         }
         navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    // delete cell
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete{
+            noteList.remove(at: indexPath.row)
+            self.saveNote()
+            self.loadNote()
+        }
     }
     
     
@@ -107,6 +114,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         }
         print("LoadData: ", noteList)
+        self.table.reloadData()
         
     }
 }
