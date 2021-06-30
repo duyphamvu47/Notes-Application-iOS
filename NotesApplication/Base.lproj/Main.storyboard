@@ -23,7 +23,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="X7B-z9-gaf">
-                                <rect key="frame" x="0.0" y="140" width="414" height="722"/>
+                                <rect key="frame" x="0.0" y="158" width="414" height="704"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="Qbw-e5-S1A" detailTextLabel="QnE-Ge-Hzn" style="IBUITableViewCellStyleSubtitle" id="13z-k6-I4H">
@@ -52,16 +52,33 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="MQV-6y-2iI">
+                                <rect key="frame" x="10" y="98" width="394" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="HrS-lc-wM8"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="vUy-fx-DH4"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="X7B-z9-gaf" secondAttribute="trailing" id="5Yt-Kg-6Lq"/>
-                            <constraint firstItem="X7B-z9-gaf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="JYY-Ac-igM"/>
-                            <constraint firstItem="X7B-z9-gaf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="bZC-5u-lvo"/>
+                            <constraint firstItem="MQV-6y-2iI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="10" id="0N2-Tf-nVU"/>
+                            <constraint firstItem="X7B-z9-gaf" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="3KZ-op-YzD"/>
+                            <constraint firstItem="X7B-z9-gaf" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="A4N-bl-CPO"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MQV-6y-2iI" secondAttribute="trailing" constant="10" id="KR2-bC-sLg"/>
+                            <constraint firstItem="X7B-z9-gaf" firstAttribute="top" secondItem="MQV-6y-2iI" secondAttribute="bottom" id="MgV-Ie-tzI"/>
+                            <constraint firstItem="MQV-6y-2iI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="UWu-36-28H"/>
                             <constraint firstItem="yHF-bl-JZq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ccu-Ha-90K"/>
+                            <constraint firstItem="X7B-z9-gaf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="hOe-hu-K0J"/>
                             <constraint firstItem="yHF-bl-JZq" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="lXw-IR-bN3"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="X7B-z9-gaf" secondAttribute="bottom" id="tSm-tk-Bih"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Notes" id="kQo-s6-md8">
@@ -73,6 +90,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="label" destination="yHF-bl-JZq" id="MVG-w5-Z00"/>
+                        <outlet property="searchBar" destination="MQV-6y-2iI" id="ed7-zX-gA6"/>
                         <outlet property="table" destination="X7B-z9-gaf" id="vZW-Rc-4aF"/>
                     </connections>
                 </viewController>
@@ -175,8 +193,8 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mdm-5x-K20" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="NIk-IL-iuI">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NIk-IL-iuI">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
