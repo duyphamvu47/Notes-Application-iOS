@@ -15,16 +15,18 @@ class EntryViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         titleField.becomeFirstResponder()
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(saveBtnClicked))
     }
+    
     
     @objc func saveBtnClicked(){
         if let title = titleField.text, !title.isEmpty, let note = noteField.text, !note.isEmpty{
             completion?(title, note)
         }
     }
+    
     
 
     /*

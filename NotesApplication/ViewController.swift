@@ -12,6 +12,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet var label:UILabel!
     @IBOutlet weak var searchBar: UISearchBar!
     
+    var goToDetailView:Bool = false
+    
     var searchResult:[Note] = []
     var isSearching:Bool = false
     
@@ -23,6 +25,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         table.dataSource = self
         title = "Notes"
     }
+
 
     
     // Create new note
@@ -112,6 +115,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 self.table.reloadData()
             }
         }
+        goToDetailView = true
         navigationController?.pushViewController(viewController, animated: true)
     }
     

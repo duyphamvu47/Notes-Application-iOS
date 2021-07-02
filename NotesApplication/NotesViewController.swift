@@ -14,6 +14,8 @@ class NotesViewController: UIViewController {
     public var noteTitle: String = ""
     public var note: String = ""
     
+    public var imageName: String = ""
+    
     public var completion: ((String, String)-> Void)?
 
     override func viewDidLoad() {
@@ -21,7 +23,24 @@ class NotesViewController: UIViewController {
         title_label.text = noteTitle
         note_label.text = note
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(saveBtnClicked))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Pictures", style: .done, target: self, action: #selector(PictureBtnClicked))
+    }
+    
+    @objc func PictureBtnClicked(){
+        guard let viewController = storyboard?.instantiateViewController(identifier: "Pic") as? PictureCollectionView else{
+            return
+        }
+        
+        viewController.title = "Pictures"
+        viewController.navigationItem.largeTitleDisplayMode = .never
+        viewController.imageList = []
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        if let editedTitle = title_label.text, !editedTitle.isEmpty, let editedNote = note_label.text, !editedNote.isEmpty{
+            completion?(editedTitle, editedNote)
+        }
     }
     
     @objc func saveBtnClicked(){
@@ -30,15 +49,16 @@ class NotesViewController: UIViewController {
         }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+//    func addImage(image: UIImage){
+//        //create and NSTextAttachment and add your image to it.
+//        let attachment = NSTextAttachment()
+//        attachment.image = getSavedImage(named: imageName)
+//        //put your NSTextAttachment into and attributedString
+//        let attString = NSAttributedString(attachment: attachment)
+//        //add this attributed string to the current position.
+//        note_label.textStorage.insert(attString, at: note_label.selectedRange.location)
+//    }
 
 }
+
+
