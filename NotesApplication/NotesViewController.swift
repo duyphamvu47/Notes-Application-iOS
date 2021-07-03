@@ -13,10 +13,9 @@ class NotesViewController: UIViewController {
     
     public var noteTitle: String = ""
     public var note: String = ""
+    public var imageList:[String] = []
     
-    public var imageName: String = ""
-    
-    public var completion: ((String, String)-> Void)?
+    public var completion: ((String, String, [String])-> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,21 +32,19 @@ class NotesViewController: UIViewController {
         
         viewController.title = "Pictures"
         viewController.navigationItem.largeTitleDisplayMode = .never
-        viewController.imageList = []
+        viewController.imageList = self.imageList
+        viewController.completion = { list in
+            self.imageList = list
+        }
         navigationController?.pushViewController(viewController, animated: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         if let editedTitle = title_label.text, !editedTitle.isEmpty, let editedNote = note_label.text, !editedNote.isEmpty{
-            completion?(editedTitle, editedNote)
+            completion?(editedTitle, editedNote, imageList)
         }
     }
-    
-    @objc func saveBtnClicked(){
-        if let editedTitle = title_label.text, !editedTitle.isEmpty, let editedNote = note_label.text, !editedNote.isEmpty{
-            completion?(editedTitle, editedNote)
-        }
-    }
+
     
 //    func addImage(image: UIImage){
 //        //create and NSTextAttachment and add your image to it.

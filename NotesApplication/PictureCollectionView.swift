@@ -14,12 +14,10 @@ class PictureCollectionView: UIViewController, UICollectionViewDataSource, UICol
     @IBOutlet var collectionView: UICollectionView!
 
     public var imageList:[String] = []
-    
-    
+    public var completion: (([String])-> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.becomeFirstResponder()
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .done, target: self, action: #selector(showChooseSourceTypeAlertController))
         collectionView.register(PictureCollectionCell.self, forCellWithReuseIdentifier: PictureCollectionCell.identifier)
         collectionView.delegate = self
@@ -34,19 +32,28 @@ class PictureCollectionView: UIViewController, UICollectionViewDataSource, UICol
         super.viewDidLayoutSubviews()
         collectionView.frame = view.bounds
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        completion?((imageList))
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return imageList.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let imageToShow = getSavedImage(named: imageList[indexPath.row])
+        if imageToShow == nil{
+            imageList.remove(at: indexPath.row)
+            collectionView.reloadData()
+        }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PictureCollectionCell.identifier, for: indexPath) as! PictureCollectionCell
-//        cell.image = getSavedImage(named: imageList[indexPath.row])
+        cell.imageView.image = imageToShow
         return cell
+
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.size.width/3 - 3, height: view.frame.size.height/3 - 3)
+        return CGSize(width: view.frame.size.width/3 - 3, height: view.frame.size.width/3 - 3)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -88,13 +95,18 @@ extension PictureCollectionView: UIImagePickerControllerDelegate, UINavigationCo
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        var flag = true
         if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
-            saveImage(image: editedImage.withRenderingMode(.alwaysOriginal))
+            flag = saveImage(image: editedImage.withRenderingMode(.alwaysOriginal))
         } else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            saveImage(image: originalImage.withRenderingMode(.alwaysOriginal))
+            flag = saveImage(image: originalImage.withRenderingMode(.alwaysOriginal))
         }
-        
         dismiss(animated: true, completion: nil)
+        if !flag{
+            let alert = UIAlertController(title: "Error", message: "Error when loading image", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     func localTime(in timeZone: String) -> String {

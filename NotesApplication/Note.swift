@@ -13,4 +13,5 @@ let storageKey:String = "data"
 struct Note:Codable{
     var title:String
     var note:String
+    var imageList:[String] = []
 }

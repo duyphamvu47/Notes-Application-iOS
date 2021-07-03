@@ -38,7 +38,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         viewController.navigationItem.largeTitleDisplayMode = .never
         viewController.completion = {title, note in
             self.navigationController?.popToRootViewController(animated: true)
-            noteList.append(Note(title: title, note: note))
+            noteList.append(Note(title: title, note: note, imageList: []))
             self.label.isHidden = true
             self.table.isHidden = false
             self.saveNote()
@@ -91,9 +91,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         viewController.title = "Note"
         viewController.noteTitle = noteToDisplay.title
         viewController.note = noteToDisplay.note
-        viewController.completion = {title, note in
-            self.navigationController?.popToRootViewController(animated: true)
-            let newNote = Note(title: title, note: note)
+        viewController.imageList = noteToDisplay.imageList
+        viewController.completion = {title, note, imageList in
+//            self.navigationController?.popToRootViewController(animated: true)
+            let newNote = Note(title: title, note: note, imageList: imageList)
             
             if self.isSearching{
                 if let row = noteList.firstIndex(where: {$0.title.lowercased() == noteToDisplay.title || $0.note.lowercased() == noteToDisplay.note}){

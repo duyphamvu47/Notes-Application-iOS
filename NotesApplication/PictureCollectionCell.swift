@@ -10,9 +10,7 @@ import UIKit
 class PictureCollectionCell: UICollectionViewCell {
     static let identifier = "PictureCollectionViewCell"
     
-    public var image:UIImage!
-    
-    private var imageView: UIImageView = {
+    public var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleToFill
         imageView.clipsToBounds = true
@@ -22,7 +20,6 @@ class PictureCollectionCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.addSubview(imageView)
-        imageView.image = UIImage(named: "Pic 1")
     }
     
     required init?(coder: NSCoder) {
