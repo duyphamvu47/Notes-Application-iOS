@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1A1AE4A8268EFDB70057E81D /* PictureCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1AE4A7268EFDB70057E81D /* PictureCollectionView.swift */; };
 		1A1AE4AA268EFE370057E81D /* PictureCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1AE4A9268EFE370057E81D /* PictureCollectionCell.swift */; };
+		1A3477332691586700B4C36D /* Picture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3477322691586700B4C36D /* Picture.swift */; };
 		1A49B33D268EBEE200B72F36 /* AlertService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A49B33C268EBEE200B72F36 /* AlertService.swift */; };
 		1A63B5EF2689B9F70062D486 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A63B5EE2689B9F70062D486 /* AppDelegate.swift */; };
 		1A63B5F12689B9F70062D486 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A63B5F02689B9F70062D486 /* SceneDelegate.swift */; };
@@ -24,6 +25,7 @@
 /* Begin PBXFileReference section */
 		1A1AE4A7268EFDB70057E81D /* PictureCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureCollectionView.swift; sourceTree = "<group>"; };
 		1A1AE4A9268EFE370057E81D /* PictureCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureCollectionCell.swift; sourceTree = "<group>"; };
+		1A3477322691586700B4C36D /* Picture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Picture.swift; sourceTree = "<group>"; };
 		1A49B33C268EBEE200B72F36 /* AlertService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertService.swift; sourceTree = "<group>"; };
 		1A63B5EB2689B9F70062D486 /* NotesApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotesApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A63B5EE2689B9F70062D486 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				1A49B33C268EBEE200B72F36 /* AlertService.swift */,
 				1A1AE4A7268EFDB70057E81D /* PictureCollectionView.swift */,
 				1A1AE4A9268EFE370057E81D /* PictureCollectionCell.swift */,
+				1A3477322691586700B4C36D /* Picture.swift */,
 			);
 			path = NotesApplication;
 			sourceTree = "<group>";
@@ -161,6 +164,7 @@
 				1A63B6052689BACF0062D486 /* EntryViewController.swift in Sources */,
 				1A49B33D268EBEE200B72F36 /* AlertService.swift in Sources */,
 				1A63B5F32689B9F70062D486 /* ViewController.swift in Sources */,
+				1A3477332691586700B4C36D /* Picture.swift in Sources */,
 				1A63B5EF2689B9F70062D486 /* AppDelegate.swift in Sources */,
 				1A63B5F12689B9F70062D486 /* SceneDelegate.swift in Sources */,
 				1A7C35D2268B0C22002E402C /* Note.swift in Sources */,

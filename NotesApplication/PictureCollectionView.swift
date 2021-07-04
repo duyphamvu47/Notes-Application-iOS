@@ -36,8 +36,27 @@ class PictureCollectionView: UIViewController, UICollectionViewDataSource, UICol
         completion?((imageList))
     }
     
+    // CollectionView func
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return imageList.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let viewController = storyboard?.instantiateViewController(identifier: "Pic detail") as? Picture else{
+            return
+        }
+        
+        viewController.title = "Picture"
+        viewController.navigationItem.largeTitleDisplayMode = .never
+        viewController.imageName = imageList[indexPath.row]
+        viewController.completion = { result in
+            if result{
+                self.imageList.remove(at: indexPath.row)
+                collectionView.deleteItems(at: [indexPath])
+            }
+        }
+        navigationController?.pushViewController(viewController, animated: true)
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -65,6 +84,7 @@ class PictureCollectionView: UIViewController, UICollectionViewDataSource, UICol
     }
 
     
+    // Support function
     
     func getSavedImage(named: String) -> UIImage? {
         if let dir = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) {

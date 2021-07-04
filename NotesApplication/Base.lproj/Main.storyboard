@@ -255,6 +255,37 @@
             </objects>
             <point key="canvasLocation" x="2805.7971014492755" y="102.45535714285714"/>
         </scene>
+        <!--Picture-->
+        <scene sceneID="1rn-Lk-oYT">
+            <objects>
+                <viewController storyboardIdentifier="Pic detail" id="xkT-JV-wqO" customClass="Picture" customModule="NotesApplication" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="w8L-Xd-k5l">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oAd-K9-8Xk">
+                                <rect key="frame" x="10" y="54" width="394" height="749"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Nhk-HN-YQj"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="oAd-K9-8Xk" firstAttribute="top" secondItem="Nhk-HN-YQj" secondAttribute="top" constant="10" id="9Fl-32-dIc"/>
+                            <constraint firstItem="oAd-K9-8Xk" firstAttribute="leading" secondItem="Nhk-HN-YQj" secondAttribute="leading" constant="10" id="Ets-c7-AeT"/>
+                            <constraint firstItem="Nhk-HN-YQj" firstAttribute="bottom" secondItem="oAd-K9-8Xk" secondAttribute="bottom" constant="10" id="Mse-i8-mxw"/>
+                            <constraint firstItem="Nhk-HN-YQj" firstAttribute="trailing" secondItem="oAd-K9-8Xk" secondAttribute="trailing" constant="10" id="qYA-Hp-mwS"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="imageView" destination="oAd-K9-8Xk" id="yXo-cJ-eE1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Po-Il-pvC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3678" y="106"/>
+        </scene>
     </scenes>
     <resources>
         <systemColor name="labelColor">
