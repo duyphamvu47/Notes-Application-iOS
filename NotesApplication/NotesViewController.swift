@@ -35,6 +35,9 @@ class NotesViewController: UIViewController {
         viewController.imageList = self.imageList
         viewController.completion = { list in
             self.imageList = list
+            if let editedTitle = self.title_label.text, !editedTitle.isEmpty, let editedNote = self.note_label.text, !editedNote.isEmpty{
+                self.completion?(editedTitle, editedNote, self.imageList)
+            }
         }
         navigationController?.pushViewController(viewController, animated: true)
     }
