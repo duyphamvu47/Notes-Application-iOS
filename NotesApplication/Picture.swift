@@ -22,7 +22,8 @@ class Picture: UIViewController {
             let alert = UIAlertController(title: "Error", message: "Error when loading image", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
-            _ = navigationController?.popViewController(animated: true)
+            // If can't load image, tell controlller to remove it
+            completion?((true))
         }
         imageView.image = imageToShow
     }
@@ -30,7 +31,6 @@ class Picture: UIViewController {
     
     @objc func deleteImage(){
         completion?((true))
-        _ = navigationController?.popViewController(animated: true)
     }
     
     func getSavedImage(named: String) -> UIImage? {

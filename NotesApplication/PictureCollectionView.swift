@@ -51,6 +51,7 @@ class PictureCollectionView: UIViewController, UICollectionViewDataSource, UICol
         viewController.navigationItem.largeTitleDisplayMode = .never
         viewController.imageName = imageList[indexPath.row]
         viewController.completion = { result in
+            self.navigationController?.popViewController(animated: true)
             if result{
                 self.imageList.remove(at: indexPath.row)
                 collectionView.deleteItems(at: [indexPath])
