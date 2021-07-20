@@ -8,34 +8,29 @@
 import UIKit
 
 class NotesViewController: UIViewController {
-    @IBOutlet var title_label: UITextField!
-    @IBOutlet var note_label: UITextView!
-    
+    @IBOutlet var titleLabel: UITextField!
+    @IBOutlet var noteLabel: UITextView!
     public var noteTitle: String = ""
     public var note: String = ""
     public var imageList:[String] = []
-    
-    public var completion: ((String, String, [String])-> Void)?
+    public var completion: ((String, String, [String]) -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title_label.text = noteTitle
-        note_label.text = note
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Pictures", style: .done, target: self, action: #selector(PictureBtnClicked))
+        titleLabel.text = noteTitle
+        noteLabel.text = note
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Pictures", style: .done, target: self, action: #selector(pictureBtnClicked))
     }
-    
-    @objc func PictureBtnClicked(){
+    @objc func pictureBtnClicked() {
         guard let viewController = storyboard?.instantiateViewController(identifier: "Pic") as? PictureCollectionView else{
             return
         }
-        
         viewController.title = "Pictures"
         viewController.navigationItem.largeTitleDisplayMode = .never
         viewController.imageList = self.imageList
         viewController.completion = { list in
             self.imageList = list
-            if let editedTitle = self.title_label.text, !editedTitle.isEmpty, let editedNote = self.note_label.text, !editedNote.isEmpty{
+            if let editedTitle = self.titleLabel.text, !editedTitle.isEmpty, let editedNote = self.noteLabel.text, !editedNote.isEmpty{
                 self.completion?(editedTitle, editedNote, self.imageList)
             }
         }
@@ -43,7 +38,7 @@ class NotesViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        if let editedTitle = title_label.text, !editedTitle.isEmpty, let editedNote = note_label.text, !editedNote.isEmpty{
+        if let editedTitle = titleLabel.text, !editedTitle.isEmpty, let editedNote = noteLabel.text, !editedNote.isEmpty{
             completion?(editedTitle, editedNote, imageList)
         }
     }
